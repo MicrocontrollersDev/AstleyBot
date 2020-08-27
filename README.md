@@ -1,0 +1,2 @@
+# AstleyBot
+Shitty discord bot.
