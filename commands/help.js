@@ -8,6 +8,7 @@ module.exports = {
   execute(message, args) {
     const data = [];
     const { commands } = message.client;
+    const { emoteMessages } = message.client;
 
     if (!args.length) {
       data.push('Here\'s a list of my commands:\n');
@@ -23,6 +24,15 @@ module.exports = {
       return message.reply('that\'s not a valid command');
     }
 
+    if (command.name == 'emoji') {
+      data.push('**Name:** emoji');
+      data.push('**Aliases:** emote');
+      data.push('**Description:** Output\'s an emoji!');
+      data.push('**Emojis:** ', emoteMessages.map(emote => emote.name).join(', '));
+      data.push('**Usage:** $emoji <emojiName>');
+      return message.channel.send(data);
+    }
+
     data.push(`**Name:** ${command.name}`);
 
     if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
@@ -30,5 +40,6 @@ module.exports = {
     if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
 
     message.channel.send(data, { split: true });
+    console.log(command);
   },
 };

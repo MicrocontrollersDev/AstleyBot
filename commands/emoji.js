@@ -9,16 +9,16 @@ module.exports = {
       return;
     }
 
-    const emojiName = args[0];
-    const emoji = client.emojiMessages.get(emojiName);
+    const emoteName = args[0];
+    const emote = client.emoteMessages.get(emoteName);
 
-    if (!emoji) {
+    if (!emote) {
       message.reply('that is not an emoji that I know!');
       return;
     }
 
     try {
-      emoji.execute(message, args);
+      emote.execute(message, args);
     }
     catch (error) {
       console.error(error);
