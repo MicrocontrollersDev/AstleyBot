@@ -3,6 +3,7 @@ module.exports = {
   description: 'unmutes a muted member of the server',
   usage: '<member>',
   execute(message, args) {
+    if (message.guild.id != '464647384429756428') return;
     if (!message.member.hasPermission('MANAGE_ROLES')) {
       message.channel.send('You do not have permission to use that!');
       return;
