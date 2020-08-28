@@ -1,6 +1,7 @@
 module.exports = {
   name: 'default',
   execute(message, args) {
+    if (message.guild.id != '464647384429756428') return;
     if (!message.member.hasPermission('KICK_MEMBERS')) {
       message.channel.send('You do not have permission to use that!');
       return;

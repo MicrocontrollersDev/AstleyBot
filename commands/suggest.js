@@ -9,8 +9,10 @@ module.exports = {
     }
 
     const msgContent = args.join(' ');
-    const dev = message.client.users.cache.get('<YOUR DISCORD ID HERE>');
+    const dev = message.client.users.cache.get('616119199609126932');
 
-    dev.send(msgContent);
+    dev.send(msgContent)
+      .catch(error => message.channel.send(`Error: ${error}. Ignore that I just said \"Message sent\" it's fake news.`));
+    message.reply('Message sent')
   },
 };
