@@ -4,7 +4,7 @@ const { prefix, token } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-client.emojiMessages = new Discord.Collection();
+client.emoteMessages = new Discord.Collection();
 client.once('ready', () => {
   console.log('Logged in');
 });
@@ -15,11 +15,11 @@ for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
   client.commands.set(command.name, command);
 }
-const emojiFiles = fs.readdirSync('./emojis').filter(file => file.endsWith('.js'));
+const emoteFiles = fs.readdirSync('./emojis').filter(file => file.endsWith('.js'));
 
-for (const file of emojiFiles) {
-  const emoji = require(`./emojis/${file}`);
-  client.emojiMessages.set(emoji.name, emoji);
+for (const file of emoteFiles) {
+  const emote = require(`./emojis/${file}`);
+  client.emoteMessages.set(emote.name, emote);
 }
 
 client.on('message', message => {
