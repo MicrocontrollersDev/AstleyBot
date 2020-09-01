@@ -1,11 +1,16 @@
 # AstleyBot
 Shitty discord bot.
-requires discord.js, node, and discord.js-opus
-to start bot, run "index.js" in your command terminal
-THIS WILL NOT WORK IN IT'S CURRENT STATE!!!!!!!!!
-You MUST replace \<YOUR TOKEN HERE\> in config.json with your bot's token.
-NONE OF THE PREINCLUDED EMOJIS WILL WORK FOR YOUR BOT!! Emojis only work for emojis that are on servers that your bot is on, to use the emoji function please change all the emoji files to emojis on servers your bot is on.
-the commands "accept", "birthday", "defualt", and "undefault" will not work unless you change the role ID.
-the command "suggest" will not work unless you replace the ID with your user ID
-the command "rickroll" will not work unless you upload an MP3 titled "rick.mp3" to the same folder as "index.js"
+
+*requires discord.js, node, and discord.js-opus*
+
+To start bot, run `index.js` in your command terminal.
+
+### THIS WILL NOT WORK IN IT'S CURRENT STATE!!!!!!!!!
+
+* Replace `<YOUR TOKEN HERE>` in config.json with your bot's token.
+* None of the preincluded emojis will work for you. Bots can only send emojis that are on servers it is in.
+  * To create emojis, use the template `example.js` and replace all text in `<>` with the appropriate values.
+* The commands "accept", "birthday", "defualt", and "undefault" will not work unless you change the role ID and either remove the `whitelist` property or add your server's ID.
+* The command "suggest" currently has my Discord ID and will not work unless you replace the ID with your user ID.
+* the command "rickroll" will not work unless you upload an MP3 titled "rick.mp3" to the same folder as `index.js`.
   
