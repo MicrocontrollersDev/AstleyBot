@@ -27,3 +27,4 @@ If you know some javascript and want to expand my bot, here's some information y
   * `description`: the description that will appear in the help command; can be any string you want.
   * `usage`: the usage that will appear in the help command; can be any string you want.
   * `whitelist`: A list of the servers that the command is allowed to be used in, if left undefined the command will work in all servers; should be the server ID as a string or server IDs as an array of strings of the server(s) you want the command to work.
+* I don't use comments unless I absolutely need something to be user friendly. Hopefully if you spend enough time you'll be able to figure out how it generally works.
