@@ -1,6 +1,6 @@
 module.exports = {
-  name: '<emoji name>',
-  //Set this to the argument you want to use to call this emoji.
+  //name: '<emoji name>',
+  //Set this to the argument you want to use to call this emoji. Also remove the two slashes in front of 'name'.
   execute(message, args) {
     message.delete();
     message.channel.send('<emoji ID here>');
