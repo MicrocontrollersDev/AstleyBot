@@ -34,7 +34,7 @@ client.on('message', message => {
 
   if (!command) return;
 
-  if (!command.whitelist || command.whitelist == message.guild.id) {
+  if (!command.whitelist || command.whitelist.includes(message.guild.id)) {
     try {
       command.execute(message, args, client);
     }
