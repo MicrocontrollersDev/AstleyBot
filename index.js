@@ -1,12 +1,12 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const { prefix, token } = require('./config.json');
+const { prefix, token, version } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.emoteMessages = new Discord.Collection();
 client.once('ready', () => {
-  console.log('Logged in');
+  console.log(`Logged in with ${version}`);
 });
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
