@@ -2,6 +2,7 @@ module.exports = {
   name: 'reload',
   description: 'Reloads a command',
   usage: 'Dev command, you have no reason to use it...',
+  help: '2',
   execute(message, args) {
     if (!args.length) return message.channel.send(`You didn't pass any command to reload, ${message.author}!`);
     const commandName = args[0].toLowerCase();

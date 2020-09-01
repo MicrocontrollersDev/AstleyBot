@@ -5,6 +5,7 @@ module.exports = {
   description: 'List all of my commands or info about a specific command.',
   aliases: ['commands'],
   usage: '[command name]',
+  help: '0',
   execute(message, args) {
     const data = [];
     const { commands } = message.client;
@@ -12,12 +13,24 @@ module.exports = {
 
     if (!args.length) {
       data.push('Here\'s a list of my commands:\n');
-      data.push(commands.map(command => command.name).join(', '));
+      const temp = commands.filter(regCom);
+      data.push(temp.map(command => command.name).join(', '));
       data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
+      data.push(`You can send \`${prefix}help admin\` to view a list of admin commands!`)
 
       return message.channel.send(data, { split: true });
     }
     const name = args[0].toLowerCase();
+
+    if (name == 'admin') {
+      data.push('Here\'s a list of my admin commands:\n');
+      const temp = commands.filter(admCom);
+      data.push(temp.map(command => command.name).join(', '));
+      data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
+
+      return message.channel.send(data, { split: true});
+    }
+
     const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
     if (!command) {
@@ -40,6 +53,12 @@ module.exports = {
     if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
 
     message.channel.send(data, { split: true });
-    console.log(command);
+
+    function regCom(command) {
+      if (command.help == 0) if(!command.whitelist || command.whitelist == message.guild.id) return true;
+    }
+    function admCom(command) {
+      if (command.help == 1) if(!command.whitelist || command.whitelist == message.guild.id) return true;
+    }
   },
 };

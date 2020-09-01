@@ -1,7 +1,10 @@
 module.exports = {
   name: 'default',
+  description: 'defaults a member of the server',
+  usage: '<member>',
+  whitelist: '464647384429756428',
+  help: '1',
   execute(message, args) {
-    if (message.guild.id != '464647384429756428') return;
     if (!message.member.hasPermission('KICK_MEMBERS')) {
       message.channel.send('You do not have permission to use that!');
       return;
@@ -11,6 +14,10 @@ module.exports = {
     }
     const taggedUser = message.mentions.users.first();
     const toMute = message.mentions.members.first();
+
+    if (message.member.roles.highest.position <= toMute.roles.highest.position) {
+      return message.channel.send('You can not default someone of equal or higher standing then you!')
+    }
 
     if (toMute.roles.cache.has('692861119315968060')) {
       return message.channel.send(`${taggedUser.username} is already defaulted!`);

@@ -2,6 +2,7 @@ module.exports = {
   name: 'stoprickroll',
   description: 'stops rickroll and leaves vc',
   aliases: ['leave', 'stop'],
+  help: '0',
   async execute(message, args) {
     if (!message.member.voice.channel) {
       return message.reply('You need to join a voice channel first!');

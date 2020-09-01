@@ -2,6 +2,7 @@ module.exports = {
   name: 'kick',
   description: 'kicks a member of the server',
   usage: '<member> [reason]',
+  help: '1',
   execute(message, args) {
     if (!message.member.hasPermission('KICK_MEMBERS')) {
       message.channel.send('You do not have permission to use that!');
@@ -12,6 +13,10 @@ module.exports = {
     }
     const taggedUser = message.mentions.users.first();
     const toKick = message.mentions.members.first();
+
+    if (message.member.roles.highest.position <= toKick.roles.highest.position) {
+      return message.channel.send('You can not kick someone of equal or higher standing then you!')
+    }
 
     toKick.kick(`${args[1]}`)
       .catch(error => message.channel.send(`Error: ${error}`));

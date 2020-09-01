@@ -3,6 +3,7 @@ module.exports = {
   description: 'Outputs an emoji!\nCurrent emojis are: `blob, catlmao, egg, fine, nomnom, parrot, ricardo1, ricardo2, trump, whoasked, yes`',
   usage: '<emojiName>',
   aliases: ['emote'],
+  help: '0',
   execute(message, args, client) {
     if (!args[0]) {
       message.reply('please enter an emoji to send');

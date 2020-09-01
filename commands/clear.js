@@ -3,6 +3,7 @@ module.exports = {
   description: 'deletes mesages',
   aliases: ['purge'],
   usage: '<# of messages to clear>',
+  help: '1',
   execute(message, args) {
     async function purge() {
       if (!message.member.hasPermission('MANAGE_MESSAGES')) {

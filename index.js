@@ -23,7 +23,9 @@ for (const file of emoteFiles) {
 }
 
 client.on('message', message => {
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
+  if (message.author.bot) return;
+
+  if (!message.content.startsWith(prefix)) return;
 
   const args = message.content.slice(prefix.length).split(/ +/);
   const commandName = args.shift().toLowerCase();
@@ -32,12 +34,51 @@ client.on('message', message => {
 
   if (!command) return;
 
+  if (!command.whitelist || command.whitelist == message.guild.id) {
+    try {
+      command.execute(message, args, client);
+    }
+    catch (error) {
+      console.error(error);
+      message.reply('there was an error trying to execute that command!');
+    }
+  }
+  else return
+});
+client.on('guildMemberUpdate', (oldMember, newMember) => {
+  const facts = {
+    id: newMember.id,
+    nickname: newMember.nickname,
+    roles: newMember.roles.cache.array()
+  };
+  const factsStr = JSON.stringify(facts);
   try {
-    command.execute(message, args, client);
+    fs.writeFile(`./rolesaver/${newMember.id}-${newMember.guild.id}.json`, factsStr, (err) => {
+      if (err) throw err;
+      console.log(`${newMember.displayName} has been updated for the server ${newMember.guild.name}`);
+    });
   }
   catch (error) {
     console.error(error);
-    message.reply('there was an error trying to execute that command!');
+  }
+});
+client.on('guildMemberAdd', GuildMember => {
+  try {
+    const data = fs.readFileSync(`./rolesaver/${GuildMember.id}-${GuildMember.guild.id}.json`);
+    const facts = JSON.parse(data);
+
+    if (!facts) return;
+
+    if (facts.nickname) GuildMember.setNickname(facts.nickname)
+
+    if (facts.roles) {
+      for (x = 0; x < facts.roles.length; x++) {
+        if (facts.roles[x].name != '@everyone') GuildMember.roles.add(facts.roles[x].id);
+      };
+    };
+  }
+  catch (error) {
+    console.error(error);
   }
 });
 client.login(token);
