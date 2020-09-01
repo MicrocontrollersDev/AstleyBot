@@ -10,7 +10,7 @@ module.exports = {
       embed: {
         "title": "AstleyBot",
         "url": "https://github.com/De-Snail/AstleyBot",
-        "description": `General purpose Discord bot made by: Neptune\\🤠#2123\n[Support Discord Server](https://discord.gg/Z7RtYAb)\nCurrently running version ${version}, hosted with [Node](https://nodejs.org/) using the [Discord.js](https://discord.js.org/#/) Library.`,
+        "description": `General purpose Discord bot made by: Neptune\\🤠#2123\nCurrently running version ${version}, hosted with [Node](https://nodejs.org/) using the [Discord.js](https://discord.js.org/#/) Library.`,
         "author": {
           "name": "Neptune🤠#2123",
           "url": "https://github.com/De-Snail",
