@@ -13,7 +13,7 @@ To start bot, run `index.js` in your command terminal.
 * The commands "accept", "birthday", "defualt", and "undefault" will not work unless you change the role ID and either remove the `whitelist` property or add your server's ID.
 * The command "suggest" currently has my Discord ID and will not work unless you replace the ID with your user ID.
 * the command "rickroll" will not work unless you upload an MP3 titled "rick.mp3" to the same folder as `index.js`.
-* The welcome and Goodbye messages are guild specific. There are 2 example guilds in the provided copy. Replace the "ID" value with the server's ID, and replace the other IDs with whatever you want.
+* The welcome and Goodbye messages are guild specific. There are 2 example guilds in the provided copy. Replace the `ID` value with the server's ID, and replace the other IDs with whatever you want.
   
 ## Useful things
 
