@@ -1,5 +1,24 @@
 {
   "prefix": "%",
   "token": "<YOUR TOKEN HERE>",
-  "version": "v.0.0.3"
+  "version": "v.0.0.4",
+  "welcome": [
+    {
+      "id": "464647384429756428",
+      "channel": "577171838178951198",
+      "title": "${GuildMember.user.username} just joined the server!",
+      "url": "https://youtu.be/fC7oUOUEEi4",
+      "description": "Welcome and please read <#531242555761754112>, then go to <#599343778939011072>, <@!${GuildMember.id}>",
+      "color": "18091",
+      "goodbye": "${GuildMember.user.username} is gone!!! 🦀"
+    },{
+      "id": "742815309777469500",
+      "channel": "742815310117339325",
+      "title": "${GuildMember.user.username} just joined the server!",
+      "url": "https://youtu.be/fC7oUOUEEi4",
+      "description": "<@!${GuildMember.id}> is gay lol",
+      "color": "16777215",
+      "goodbye": "${GuildMember.user.username} had enough of this faggotry."
+    }
+  ]
 }

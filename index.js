@@ -1,6 +1,6 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const { prefix, token, version } = require('./config.json');
+const { prefix, token, version, welcome } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -80,5 +80,34 @@ client.on('guildMemberAdd', GuildMember => {
   catch (error) {
     console.error(error);
   }
+  const server = welcome.find(guild => guild.id && guild.id == GuildMember.guild.id);
+
+  if (!server) return;
+
+  const channel = server.channel;
+
+  client.channels.cache.get(channel).send({
+    embed: {
+      "title": eval('`'+server.title+'`'),
+      "url": server.url,
+      "description": eval('`'+server.description+'`'),
+      "color": eval(server.color),
+      "footer": {
+        "text": `${GuildMember.id}`
+      },
+      "thumbnail": {
+        "url": `${GuildMember.user.displayAvatarURL()}`
+      }
+    }
+  });
+});
+client.on('guildMemberRemove', GuildMember => {
+  const server = welcome.find(guild => guild.id && guild.id == GuildMember.guild.id);
+  
+  if (!server) return;
+
+  const channel = server.channel;
+
+  client.channels.cache.get(channel).send(eval('`'+server.goodbye+'`'));
 });
 client.login(token);

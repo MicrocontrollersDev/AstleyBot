@@ -15,8 +15,8 @@ module.exports = {
         return;
       }
       const del = parseInt(args[0]) + 1;
-      if (del <= 1 || del > 100) {
-        return message.channel.send('you can only delete 1-99 messages');
+      if (del <= 1 || del > 101) {
+        return message.channel.send('you can only delete 1-100 messages');
       }
       message.channel.bulkDelete(del, true)
         .catch(error => message.channel.send(`Error: ${error}`));
