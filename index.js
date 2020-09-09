@@ -22,6 +22,7 @@ for (const file of emoteFiles) {
   client.emoteMessages.set(emote.name, emote);
 }
 
+//Commands and other text based scripts
 client.on('message', message => {
   if (message.author.bot) return;
 
@@ -45,6 +46,8 @@ client.on('message', message => {
   }
   else return
 });
+
+//Role saver auto updater
 client.on('guildMemberUpdate', (oldMember, newMember) => {
   const facts = {
     id: newMember.id,
@@ -62,6 +65,8 @@ client.on('guildMemberUpdate', (oldMember, newMember) => {
     console.error(error);
   }
 });
+
+//Role saver and welcome message
 client.on('guildMemberAdd', GuildMember => {
   try {
     const data = fs.readFileSync(`./rolesaver/${GuildMember.id}-${GuildMember.guild.id}.json`);
@@ -101,6 +106,8 @@ client.on('guildMemberAdd', GuildMember => {
     }
   });
 });
+
+//goodbye message
 client.on('guildMemberRemove', GuildMember => {
   const server = welcome.find(guild => guild.id && guild.id == GuildMember.guild.id);
   
